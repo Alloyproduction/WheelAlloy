@@ -50,3 +50,11 @@ class invoicetelenoc(models.Model):
         return invoice_vals
 
         # 'x_studio_field_rgEdd':order.x_studio_field_icWOZ.id,
+
+    class invoicetelenoc(models.Model):
+        _inherit = "stock.picking"
+
+        partner_id = fields.Many2one(
+            'res.partner', 'Partner',
+            states={'done': [('readonly', True)], 'cancel': [('readonly', True)]},
+        domain='["&","&","&",["is_company","!=",True],["customer","!=",True],["supplier","!=",True],["is_service_provider","!=",True]]')
