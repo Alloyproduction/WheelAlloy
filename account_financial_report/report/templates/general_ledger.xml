@@ -155,6 +155,41 @@
                         <!--## amount_currency-->
                         <div class="act_as_cell amount" style="width: 5.19%;">Amount cur.</div>
                     </t>
+                    <t>
+                        <!--## currency_name-->
+                        <div class="act_as_cell" style="width: 2.08%;">sl#</div>
+                    </t>
+
+
+                    <t>
+                        <!--## amount_currency-->
+                        <div class="act_as_cell amount" style="width: 5.19%;">Type of car</div>
+                    </t>
+                    <t>
+                            <!--## currency_name-->
+                            <div class="act_as_cell" style="width: 2.08%;">Plate#</div>
+                        </t>
+                        <t>
+                            <!--## amount_currency-->
+                            <div class="act_as_cell amount" style="width: 5.19%;">card</div>
+                    </t>
+                    <t>
+                            <!--## currency_name-->
+                            <div class="act_as_cell" style="width: 2.08%;">clam#</div>
+                        </t>
+                        <t>
+                            <!--## amount_currency-->
+                            <div class="act_as_cell amount" style="width: 5.19%;">amount before vat</div>
+                    </t>
+                    <t>
+                            <!--## currency_name-->
+                            <div class="act_as_cell" style="width: 2.08%;">vat</div>
+                        </t>
+                        <t>
+                            <!--## amount_currency-->
+                            <div class="act_as_cell amount" style="width: 5.19%;">total</div>
+                    </t>
+
                 </div>
             </div>
 
@@ -469,7 +504,115 @@
                             <div class="act_as_cell amount" style="width: 5.19%;"/>
                         </t>
                     </t>
+
+<!--                    magdy-->
+                     <div class="act_as_cell left">
+                        <t t-set="res_model" t-value="'account.move.line'"/>
+                        <span>
+                            <a t-att-data-active-id="line.move_line_id.id"
+                               t-att-data-res-model="res_model"
+                               class="o_account_financial_reports_web_action"
+                               style="color: black;">
+                                <t t-raw="line.x_sale_id"/></a>
+                        </span>
+                    </div>
+<!--                    <div class="act_as_cell left">-->
+<!--                        <t t-set="res_model" t-value="'account.move.line'"/>-->
+<!--                        <span>-->
+<!--                            <a t-att-data-active-id="line.move_line_id.id"-->
+<!--                               t-att-data-res-model="res_model"-->
+<!--                               class="o_account_financial_reports_web_action"-->
+<!--                               style="color: black;">-->
+<!--                                <t t-raw="line.date"/></a>-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                    <div class="act_as_cell left">-->
+<!--                        <t t-set="res_model" t-value="'account.move.line'"/>-->
+<!--                        <span>-->
+<!--                            <a t-att-data-active-id="line.move_line_id.id"-->
+<!--                               t-att-data-res-model="res_model"-->
+<!--                               class="o_account_financial_reports_web_action"-->
+<!--                               style="color: black;">-->
+<!--                                <t t-raw="line.invoice_number"/></a>-->
+<!--                        </span>-->
+<!--                    </div>-->
+                    <div class="act_as_cell left">
+                        <t t-set="res_model" t-value="'account.move.line'"/>
+                        <span>
+                            <a t-att-data-active-id="line.move_line_id.id"
+                               t-att-data-res-model="res_model"
+                               class="o_account_financial_reports_web_action"
+                               style="color: black;">
+                                <t t-raw="line.x_studio_car_type_name"/></a>
+                        </span>
+                    </div>
+                    <div class="act_as_cell left">
+                        <t t-set="res_model" t-value="'account.move.line'"/>
+                        <span>
+                            <a t-att-data-active-id="line.move_line_id.id"
+                               t-att-data-res-model="res_model"
+                               class="o_account_financial_reports_web_action"
+                               style="color: black;">
+                                <t t-raw="line.x_studio_plate_num"/></a>
+                        </span>
+                    </div>
+                    <div class="act_as_cell left">
+                        <t t-set="res_model" t-value="'account.move.line'"/>
+                        <span>
+                            <a t-att-data-active-id="line.move_line_id.id"
+                               t-att-data-res-model="res_model"
+                               class="o_account_financial_reports_web_action"
+                               style="color: black;">
+                                <t t-raw="line.x_studio_job_card_1"/></a>
+                        </span>
+                    </div>
+                    <div class="act_as_cell left">
+                        <t t-set="res_model" t-value="'account.move.line'"/>
+                        <span>
+                            <a t-att-data-active-id="line.move_line_id.id"
+                               t-att-data-res-model="res_model"
+                               class="o_account_financial_reports_web_action"
+                               style="color: black;">
+                                <t t-raw="line.x_studio_claim_num"/></a>
+                        </span>
+                    </div>
+                    <div class="act_as_cell left">
+                        <t t-set="res_model" t-value="'account.move.line'"/>
+                        <span>
+                            <a t-att-data-active-id="line.move_line_id.id"
+                               t-att-data-res-model="res_model"
+                               class="o_account_financial_reports_web_action"
+                               style="color: black;">
+                                <t t-raw="line.x_amount_untaxed"/></a>
+                        </span>
+                    </div>
+                    <div class="act_as_cell left">
+                        <t t-set="res_model" t-value="'account.move.line'"/>
+                        <span>
+                            <a t-att-data-active-id="line.move_line_id.id"
+                               t-att-data-res-model="res_model"
+                               class="o_account_financial_reports_web_action"
+                               style="color: black;">
+                                <t t-raw="line.x_amount_tax"/></a>
+                        </span>
+                    </div>
+                    <div class="act_as_cell left">
+                        <t t-set="res_model" t-value="'account.move.line'"/>
+                        <span>
+                            <a t-att-data-active-id="line.move_line_id.id"
+                               t-att-data-res-model="res_model"
+                               class="o_account_financial_reports_web_action"
+                               style="color: black;">
+                                <t t-raw="line.x_amount_total"/></a>
+                        </span>
+                    </div>
+
+
+<!--                   magdy-->
+
                 </div>
+
+
             </t>
         </div>
     </template>
@@ -550,6 +693,17 @@
                         <div class="act_as_cell amount" style="width: 2.08%;"/>
                         <div class="act_as_cell amount" style="width: 5.19%;"/>
                     </t>
+<!--                    <t t-raw="line."-->
+                        <!--## x_studio_plate_num-->
+
+                        <t t-if="line.x_studio_plate_num">
+                            <span>
+                                <t t-raw="line.x_studio_plate_num"/>
+                            </span>
+                        </t>
+
+
+
                 </t>
             </div>
         </div>
