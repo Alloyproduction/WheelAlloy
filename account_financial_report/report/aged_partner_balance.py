@@ -181,7 +181,7 @@ class AgedPartnerBalanceReportMoveLine(models.TransientModel):
     x_studio_plate_num =fields.Char(string="Plate#")
     x_studio_claim_num =fields.Char(string="Claim#")
 
-    cartype = fields.Many2one
+    #cartype = fields.Many2one
 
 
 

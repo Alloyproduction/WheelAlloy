@@ -206,6 +206,22 @@ class GeneralLedgerReportMoveLine(models.TransientModel):
     currency_id = fields.Many2one('res.currency')
     amount_currency = fields.Float(digits=(16, 2))
 
+    x_studio_job_card_1 = fields.Char(string="job card")
+    x_studio_car_type_name = fields.Char(string="Car Type Name")
+    x_studio_plate_num = fields.Char(string="Plate#")
+    x_studio_claim_num = fields.Char(string="Claim#")
+    x_sale_id  =fields.Char(string="Sales No ")
+    x_amount_untaxed =fields.Float(digits=(16, 2))
+    x_amount_tax = fields.Float(digits=(16, 2))
+    x_amount_total = fields.Float(digits=(16, 2))
+
+    '''
+      amount_untaxed numeric, -- Untaxed Amount
+   amount_tax numeric, -- Tax
+  amount_total numeric, -- Total
+    '''
+
+
 
 class GeneralLedgerReportCompute(models.TransientModel):
     """ Here, we just define methods.
@@ -1074,6 +1090,17 @@ INSERT INTO
     taxes_description,
     partner,
     label,
+     
+        
+    x_studio_job_card_1 ,
+    x_studio_car_type_name ,
+    x_studio_plate_num ,
+    x_studio_claim_num ,
+    x_sale_id  ,
+    x_amount_untaxed ,
+    x_amount_tax ,
+    x_amount_total ,
+         
     cost_center,
     matching_number,
     debit,
@@ -1138,6 +1165,17 @@ SELECT
             """
         query_inject_move_line += """
     CONCAT_WS(' - ', NULLIF(ml.ref, ''), NULLIF(ml.name, '')) AS label,
+    
+    ac.x_studio_job_card_1,
+    ac.x_studio_car_type_name ,
+
+    ac.x_studio_plate_num ,
+    ac.x_studio_claim_num ,
+    ac.origin  ,
+    ac.amount_untaxed ,
+    ac.amount_tax ,
+    ac.amount_total ,
+    
     aa.name AS cost_center,
     fr.name AS matching_number,
     ml.debit,
@@ -1185,6 +1223,9 @@ INNER JOIN
         query_inject_move_line += """
 INNER JOIN
     account_move_line ml ON ra.account_id = ml.account_id
+INNER JOIN
+      account_invoice  ac ON ml.ref = ac.reference
+      
 INNER JOIN
     account_move m ON ml.move_id = m.id
 INNER JOIN
@@ -1419,6 +1460,19 @@ INSERT INTO
     account,
     journal,
     label,
+    
+    x_studio_job_card_1 ,
+    x_studio_car_type_name ,
+    x_studio_plate_num ,
+    x_studio_claim_num ,
+    x_sale_id  ,
+    x_amount_untaxed ,
+    x_amount_tax ,
+    x_amount_total ,
+    
+    
+    
+    
     debit,
     credit,
     cumul_balance
@@ -1431,6 +1485,17 @@ SELECT
     a.code AS account,
     j.code AS journal,
     '""" + _('Centralized Entries') + """' AS label,
+    
+     ac.x_studio_job_card_1,
+    ac.x_studio_car_type_name ,
+
+    ac.x_studio_plate_num ,
+    ac.x_studio_claim_num ,
+    ac.origin  ,
+    ac.amount_untaxed ,
+    ac.amount_tax ,
+    ac.amount_total ,
+  
     ml.debit AS debit,
     ml.credit AS credit,
     ra.initial_balance + (
@@ -1441,6 +1506,11 @@ FROM
     report_general_ledger_account ra
 INNER JOIN
     move_lines ml ON ra.account_id = ml.account_id
+INNER JOIN
+    account_move_line aml ON ra.account_id = aml.account_id
+INNER JOIN
+      account_invoice  ac ON aml.ref = ac.reference
+ 
 INNER JOIN
     account_account a ON ml.account_id = a.id
 INNER JOIN
